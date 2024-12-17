@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+// import Button from "./img/components/Button";
+// import Card from "./components/common/Card";
+import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Card from "./components/common/Card.jsx";
+import Header from "./components/common/Header.jsx";
+import Footer from "./components/common/Footer.jsx";
+import cardmockup from "./data/cardmockup";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+
+      <div className="content">
+        {cardmockup.length ? (
+          cardmockup.map(({ title, img, text }) => (
+            <Card title={title} img={img} text={text} />
+          ))
+        ) : (
+          <div>Content hasnt loaded yet</div>
+        )}
+      </div>
+      <Footer />
     </div>
   );
 }
